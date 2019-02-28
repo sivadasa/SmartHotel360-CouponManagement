@@ -1,4 +1,4 @@
-package <yourpackagename>.configurations;
+package com.example.fabrikam.HotelCoupon.config;
 
 import javax.servlet.Filter;
 
