@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
+ import com.microsoft.applicationinsights.telemetry.Duration;
 
 @Controller
 @RequestMapping("/")
@@ -21,6 +22,7 @@ public class LoginController {
 
     @Autowired
     private UserRepository repository;
+    TelemetryClient telemetryClient;
 
     private static final String loginState="loginState";
     private static final String loginStateParam = "loginStateStr";
@@ -57,6 +59,12 @@ public class LoginController {
                 return successUrl;
             }
         }
+        //Application Insights tracking
+        telemetryClient.trackEvent("Sending a custom event...");
+        telemetryClient.trackTrace("Sending a custom trace....");
+        telemetryClient.trackMetric("custom metric", 1.0);
+        telemetryClient.trackDependency("SQL", "Insert", new Duration(0, 0, 1, 1, 1), true);
+        
         return failedUrl;
     }
 }
