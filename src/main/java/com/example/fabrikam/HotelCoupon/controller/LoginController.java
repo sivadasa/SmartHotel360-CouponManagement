@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
- import com.microsoft.applicationinsights.telemetry.Duration;
+import com.microsoft.applicationinsights.telemetry;
 
 @Controller
 @RequestMapping("/")
@@ -63,7 +63,6 @@ public class LoginController {
         telemetryClient.trackEvent("Sending a custom event...");
         telemetryClient.trackTrace("Sending a custom trace....");
         telemetryClient.trackMetric("custom metric", 1.0);
-        telemetryClient.trackDependency("SQL", "Insert", new Duration(0, 0, 1, 1, 1), true);
         
         return failedUrl;
     }
