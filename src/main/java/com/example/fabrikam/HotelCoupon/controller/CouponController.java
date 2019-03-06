@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.microsoft.applicationinsights.TelemetryClient;
+import com.microsoft.applicationinsights.telemetry.Duration;
+
 @Controller
 public class CouponController {
 
@@ -35,7 +38,12 @@ public class CouponController {
         }
         Guest guest = guestRepository.findOne((long)guestIdInt);
         model.addAttribute("couponsModel", new CouponListViewModel(couponList,guest));
+                //Application Insights tracking
+        telemetryClient.trackEvent("Sending a custom event...");
+        telemetryClient.trackTrace("Sending a custom trace....");
+        telemetryClient.trackMetric("custom metric", 1.0);
         return "coupon";
+        
     }
 
 }
