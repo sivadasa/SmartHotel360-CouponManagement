@@ -23,6 +23,7 @@ public class CouponController {
 
     @Autowired
     private CouponRepository couponRepository;
+    TelemetryClient telemetryClient;
 
     @Autowired
     private GuestRepository guestRepository;
