@@ -14,7 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
-import com.microsoft.applicationinsights.telemetry;
+import com.microsoft.applicationinsights.TelemetryClient;
+import com.microsoft.applicationinsights.telemetry.Duration;
 
 @Controller
 @RequestMapping("/")
